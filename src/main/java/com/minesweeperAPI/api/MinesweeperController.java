@@ -30,6 +30,11 @@ public class MinesweeperController {
         return minesweeperService.play(action);
     }
 
+    @PostMapping("/mark")
+    public Board markFlag(@RequestBody Action action){
+        return minesweeperService.markFag(action);
+    }
+
 
 
 

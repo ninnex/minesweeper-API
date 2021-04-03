@@ -21,4 +21,10 @@ public class MinesweeperService {
         return board;
     }
 
+    public Board markFag(Action action){
+        System.out.println(action);
+        board.setVal(action.getX(), action.getY(), 11);
+        return board;
+    }
+
 }
