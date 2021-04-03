@@ -25,7 +25,10 @@ public class MinesweeperController {
         return minesweeperService.getBoard();
     }
 
-
+    @PostMapping("/play")
+    public Board getBoard(@RequestBody Action action){
+        return minesweeperService.play(action);
+    }
 
 
 
