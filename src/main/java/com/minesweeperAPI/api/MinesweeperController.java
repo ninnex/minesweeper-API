@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
+@AllArgsConstructor
 public class MinesweeperController {
 
-    @Autowired
     MinesweeperService minesweeperService;
 
     @GetMapping("/getboard")
