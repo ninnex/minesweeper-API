@@ -1,6 +1,8 @@
 package com.minesweeperAPI.services;
 
+import com.minesweeperAPI.dao.BoardRepo;
 import com.minesweeperAPI.model.Board;
+import com.minesweeperAPI.model.BoardEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,11 +13,21 @@ import static com.minesweeperAPI.constants.Constants.*;
 @AllArgsConstructor
 public class BoardBusiness {
 
+    BoardRepo boardRepo;
+
     public Board play(Board board, int x, int y){
+        if(board.getStatus().equals(LOOSE))
+            return board;
+
         if(board.getMatriz(x, y) == HIDE) {
             board.setMatriz(x, y, board.getMines(x, y));
-            board = recursive(board, x, y);
+            if(board.getMatriz(x, y) == MINE)
+                board.setStatus(LOOSE);
+            if(board.getMatriz(x, y) == EMPTY)
+                board = recursive(board, x, y);
         }
+        if(isWon(board))
+            board.setStatus(WIN);
 
         return  board;
     }
@@ -27,7 +39,17 @@ public class BoardBusiness {
                 board.setMatriz(i,j, HIDE);
         board = putMines(board, MINES_AMOUNT);
         board = setMinesNumber(board);
+        boardRepo.save(new BoardEntity(board, 1));
         return board;
+    }
+
+    public Board getMatrizFromRepo(int id){
+        return boardRepo.findById(id).get().getBoardObject();
+
+    }
+
+    public Board saveMatrizFromRepo(Board board, int id){
+        return boardRepo.save(new BoardEntity(board, id)).getBoardObject();
     }
 
     private Board putMines(Board board, int amount){
@@ -86,6 +108,21 @@ public class BoardBusiness {
             board = recursive(board,x, y-1);
 
         return board;
+    }
+
+
+    public boolean isWon(Board board){
+        for (int i = 0; i < board.getN(); i++) {
+            for (int j = 0; j < board.getM(); j++) {
+
+                if( board.getMatriz(i, j) == HIDE && (board.getMines(i, j) != MINE))
+                    return false;
+            }
+
+        }
+
+
+        return true;
     }
 
 

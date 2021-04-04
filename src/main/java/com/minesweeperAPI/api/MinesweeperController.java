@@ -34,6 +34,16 @@ public class MinesweeperController {
         return minesweeperService.markFag(action);
     }
 
+    @PostMapping("/load")
+    public Board loadBoard(@RequestBody Action action){
+        return minesweeperService.loadBoard(action);
+    }
+
+    @PostMapping("/save")
+    public Board saveBoard(@RequestBody Action action){
+        return minesweeperService.saveBoard(action);
+    }
+
 
 
 
