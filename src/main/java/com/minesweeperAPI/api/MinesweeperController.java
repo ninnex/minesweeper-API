@@ -1,10 +1,9 @@
 package com.minesweeperAPI.api;
 
-import com.minesweeperAPI.api.model.dto.Action;
-import com.minesweeperAPI.api.model.dto.Board;
+import com.minesweeperAPI.model.Action;
+import com.minesweeperAPI.model.Board;
 import com.minesweeperAPI.services.MinesweeperService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

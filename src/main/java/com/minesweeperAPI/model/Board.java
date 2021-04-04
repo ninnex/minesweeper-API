@@ -1,4 +1,4 @@
-package com.minesweeperAPI.api.model.dto;
+package com.minesweeperAPI.model;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -33,17 +33,21 @@ public class Board {
         mines = new int[n][m];
     }
 
-    public void setVal(int x, int y, int val){
+    public void setMatriz(int x, int y, int val){
         this.matriz[x][y] = val;
     }
 
-
-
-    public void initMatriz(){
-        for (int i = 0; i < matriz.length; i++)
-            for (int j = 0; j < matriz.length; j++)
-                 this.matriz[i][j] = HIDE;
+    public void setMines(int x, int y, int val){
+        this.mines[x][y] = val;
     }
+
+    public int getMatriz(int x, int y){
+        return this.matriz[x][y];
+    }
+    public int getMines(int x, int y){
+        return this.mines[x][y];
+    }
+
 
     public void play(int x, int y){
         if(this.matriz[x][y] == HIDE) {

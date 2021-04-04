@@ -1,4 +1,4 @@
-package com.minesweeperAPI.api.model.dto;
+package com.minesweeperAPI.model;
 
 import lombok.Getter;
 import lombok.Setter;
