@@ -43,11 +43,6 @@ public class Board {
     }
 
 
-    public void play(int x, int y){
-        if(this.matriz[x][y] == HIDE) {
-            this.matriz[x][y] = this.mines[x][y];
-        }
-    }
 
 
 

@@ -11,6 +11,14 @@ import static com.minesweeperAPI.constants.Constants.*;
 @AllArgsConstructor
 public class BoardBusiness {
 
+    public Board play(Board board, int x, int y){
+        if(board.getMatriz(x, y) == HIDE) {
+            board.setMatriz(x, y, board.getMines(x, y));
+            board = recursive(board, x, y);
+        }
+
+        return  board;
+    }
 
 
     public Board initMatriz(Board board){
@@ -60,6 +68,24 @@ public class BoardBusiness {
                 if(board.getMines(x+i, y+j) == MINE)
                     count++;
         return count ;
+    }
+
+    private Board recursive(Board board, int x, int y){
+
+        board.setMatriz(x, y, board.getMines(x, y));
+        if(board.getMines(x, y) != EMPTY)
+            return board;
+        int n = board.getN(), m = board.getM();
+        if(x < n-1 && board.getMatriz(x+1, y) == HIDE)
+            board = recursive(board,x +1 , y);
+        if(y < m-1 && board.getMatriz(x, y+1) == HIDE)
+            board = recursive(board, x, y +1);
+        if(x > 0   && board.getMatriz(x-1, y) == HIDE)
+            board = recursive(board,x -1, y);
+        if(y > 0   && board.getMatriz(x, y-1) == HIDE)
+            board = recursive(board,x, y-1);
+
+        return board;
     }
 
 

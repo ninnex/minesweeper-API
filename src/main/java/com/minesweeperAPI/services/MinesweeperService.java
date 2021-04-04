@@ -19,7 +19,7 @@ public class MinesweeperService {
 
     public Board play(Action action){
         System.out.println(action);
-        board.play(action.getX(), action.getY());
+        board = boardBusiness.play(board, action.getX(), action.getY());
         return board;
     }
 
