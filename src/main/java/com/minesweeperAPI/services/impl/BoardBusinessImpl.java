@@ -29,7 +29,7 @@ public class BoardBusinessImpl implements BoardBusiness {
             if(board.getMatriz(x, y) == MINE)
                 board.setStatus(LOOSE);
             if(board.getMatriz(x, y) == EMPTY)
-                board = recursive(board, x, y);
+                board = recursiveNewVersion(board, x, y);
         }
         if(isWon(board))
             board.setStatus(WIN);
@@ -97,24 +97,48 @@ public class BoardBusinessImpl implements BoardBusiness {
         return count ;
     }
 
-    private Board recursive(Board board, int x, int y){
+    private Board recursiveOld(Board board, int x, int y){
 
         board.setMatriz(x, y, board.getMines(x, y));
         if(board.getMines(x, y) != EMPTY)
             return board;
         int n = board.getN(), m = board.getM();
         if(x < n-1 && board.getMatriz(x+1, y) == HIDE)
-            board = recursive(board,x +1 , y);
+            board = recursiveOld(board,x +1 , y);
         if(y < m-1 && board.getMatriz(x, y+1) == HIDE)
-            board = recursive(board, x, y +1);
+            board = recursiveOld(board, x, y +1);
         if(x > 0   && board.getMatriz(x-1, y) == HIDE)
-            board = recursive(board,x -1, y);
+            board = recursiveOld(board,x -1, y);
         if(y > 0   && board.getMatriz(x, y-1) == HIDE)
-            board = recursive(board,x, y-1);
+            board = recursiveOld(board,x, y-1);
 
         return board;
     }
 
+
+    public Board recursiveNewVersion(Board board, int x, int y){
+
+        board.setMatriz(x, y, board.getMines(x, y));
+        if(board.getMines(x, y) != EMPTY)
+            return board;
+
+        int n = board.getN(), m = board.getM();
+        int ix = -1, sx = 1, iy = -1, sy = 1;
+        if(x + ix <  0) ix = 0;
+        if(x + sx >= n) sx = 0;
+        if(y + iy <  0) iy = 0;
+        if(y + sy >= m) sy = 0;
+        int count = 0;
+
+        for (int i = ix; i <= sx; i++)
+            for (int j = iy; j <= sy; j++)
+                if(  board.getMatriz(x+i, y+j) == HIDE)
+                    board = recursiveNewVersion(board, x+i, y+j);
+
+        return board;
+
+
+    }
 
     public boolean isWon(Board board){
         for (int i = 0; i < board.getN(); i++) {
