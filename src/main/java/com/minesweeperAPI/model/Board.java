@@ -1,13 +1,11 @@
 package com.minesweeperAPI.model;
 
-import lombok.Builder;
+
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-import java.util.concurrent.ThreadLocalRandom;
 
-import java.util.Arrays;
+import static com.minesweeperAPI.constants.Constants.HIDE;
 
 @Getter
 @Setter
@@ -17,10 +15,6 @@ public class Board {
     private int n;
     private int m;
     private int [][]matriz;
-
-    private final int MINE   = 10;
-    private final int HIDE   = 9;
-    private final int EMPTY  = 0;
 
     private int [][]mines;
 
