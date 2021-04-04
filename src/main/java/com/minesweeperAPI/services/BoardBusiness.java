@@ -3,17 +3,15 @@ package com.minesweeperAPI.services;
 import com.minesweeperAPI.model.Board;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.concurrent.ThreadLocalRandom;
+
+import static com.minesweeperAPI.constants.Constants.*;
 
 @Service
 @AllArgsConstructor
 public class BoardBusiness {
 
-    private static final int MINE   = 10;
-    private static final int HIDE   = 9;
-    private static final int EMPTY  = 0;
-    private static final int MINES_AMOUNT = 10;
+
 
     public Board initMatriz(Board board){
         for (int i = 0; i < board.getN(); i++)
