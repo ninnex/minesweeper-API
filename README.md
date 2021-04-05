@@ -29,7 +29,7 @@ I used some integer codes to identify every type of cell:
 
 To put a flag (green 11 code) use double-click.
 
-You can save a game using the Save button and then you can load it using the Load button
+You can save the current game using the Save button and then you can load it using the Load button
 
 # Play the game
 
@@ -37,7 +37,7 @@ You can use the url the following in order to play the game
 
 *  http://168.138.140.243:8080/
 
-I miss some features like set parameters like number of columns, rows or mine, multi-users, a lot of UI improvements because I had to fullfill other personal commitments. I will add it when I have another free time.
+I miss some features like set parameters like number of columns, rows or mines, multi-users and a lot of UI improvements because I had to fullfill other personal commitments. I will add it when I have another free time.
 
 Rows and columns are set on 10. Mines is set on 10 too.
 
