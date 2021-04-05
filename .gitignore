@@ -32,3 +32,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+src/main/minesweeper-react-client/
+src/main/resources/static/
+

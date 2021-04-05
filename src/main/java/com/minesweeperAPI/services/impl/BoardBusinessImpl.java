@@ -128,7 +128,6 @@ public class BoardBusinessImpl implements BoardBusiness {
         if(x + sx >= n) sx = 0;
         if(y + iy <  0) iy = 0;
         if(y + sy >= m) sy = 0;
-        int count = 0;
 
         for (int i = ix; i <= sx; i++)
             for (int j = iy; j <= sy; j++)

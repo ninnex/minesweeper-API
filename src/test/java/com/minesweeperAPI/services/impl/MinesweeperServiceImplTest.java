@@ -1,7 +1,9 @@
 package com.minesweeperAPI.services.impl;
 
+import com.minesweeperAPI.model.Action;
 import com.minesweeperAPI.model.Board;
 import com.minesweeperAPI.services.BoardBusiness;
+import com.minesweeperAPI.services.MinesweeperService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,9 @@ class MinesweeperServiceImplTest {
     @Autowired
     BoardBusiness boardBusiness;
 
+    @Autowired
+    MinesweeperService service;
+
     final int MAX_MINES_NUMBER = 10;
 
 
@@ -26,21 +31,19 @@ class MinesweeperServiceImplTest {
         assertTrue(checkMinesNumber(board));
     }
 
-    @Test
-    void play() {
-    }
+
 
     @Test
     void markFag() {
+        board = new Board(10,10);
+        board = boardBusiness.initMatriz(board);
+        service.setBoard(board);
+        Action action = Action.builder().action("mark").x(0).y(0).build();
+        board = service.markFag(action);
+        assertEquals(board.getMatriz(0,0), 11);
     }
 
-    @Test
-    void loadBoard() {
-    }
 
-    @Test
-    void saveBoard() {
-    }
 
 
 

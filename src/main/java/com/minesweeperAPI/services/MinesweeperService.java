@@ -14,4 +14,6 @@ public interface MinesweeperService {
     public Board loadBoard(Action action);
 
     public Board saveBoard(Action action);
+
+    public void setBoard(Board board);
 }

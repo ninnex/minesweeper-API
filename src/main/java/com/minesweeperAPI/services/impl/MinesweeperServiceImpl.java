@@ -4,10 +4,12 @@ import com.minesweeperAPI.model.Action;
 import com.minesweeperAPI.model.Board;
 import com.minesweeperAPI.services.BoardBusiness;
 import com.minesweeperAPI.services.MinesweeperService;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Setter
 public class MinesweeperServiceImpl implements MinesweeperService {
 
     Board board;
