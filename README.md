@@ -39,7 +39,7 @@ You can use the url the following in order to play the game
 
 I miss some features like set parameters like number of columns, rows or mines, multi-users and a lot of UI improvements because I had to fullfill other personal commitments. I will add it when I have another free time.
 
-Rows and columns are set on 10. Mines is set on 10 too.
+Rows and columns are set on 10. Mines are set on 10 too.
 
 I really enjoyed making this test. Thank for the opportunity :)
 
